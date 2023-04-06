@@ -9,7 +9,7 @@ from AniPlay.plugins.stats import day, over
 @app.on_message(filters.command(['start', 'ping', 'help', 'alive']))
 async def start(_, message: Message):
     try:
-        await message.reply_text('Bot Is Online...\nSearch Animes Using /search or /s\n\n Join - @SUNG_JIN_WOO_UPDATE for More...')
+        await message.reply_text('Bot Is Online, \nYou Can Watch Anime Online With The Help Of The Bot \nEx- /search Anime name or /s Anime name\n\nIf You Face Any Problem Using Bot Then Contact @The_NanamiKento\nJoin For More Bots : @Campus_Bot_Update')
     except:
         return
 
