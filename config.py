@@ -1,6 +1,10 @@
 import os
 
 
+#Database 
+DB_URI = os.environ.get("DATABASE_URL", "")
+DB_NAME = os.environ.get("DATABASE_NAME", "animesearchbot")
+
 #ForceSub
 MUST_JOIN = os.environ.get("MUST_JOIN", "")
 
