@@ -4,3 +4,5 @@ bs4==0.0.1
 pyrogram==2.0.100
 TgCrypto==1.2.5
 matplotlib==3.7.1
+pymongo
+dnspython
