@@ -1,36 +1,34 @@
-#(©)CodeXBotz
+from motor.motor_asyncio import AsyncIOMotorClient as _mongo_client_
+from pymongo import MongoClient
+from pyrogram import Client
+
+import config
+
+from ..logging import LOGGER
+
+TEMP_MONGODB = "mongodb+srv://shikhar:shikhar@cluster0.6xzlh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 
-
-
-import pymongo, os
-from config import DB_URI, DB_NAME
-
-
-dbclient = pymongo.MongoClient(DB_URI)
-database = dbclient[DB_NAME]
-
-
-user_data = database['users']
-
-
-
-async def present_user(user_id : int):
-    found = user_data.find_one({'_id': user_id})
-    return bool(found)
-
-async def add_user(user_id: int):
-    user_data.insert_one({'_id': user_id})
-    return
-
-async def full_userbase():
-    user_docs = user_data.find()
-    user_ids = []
-    for doc in user_docs:
-        user_ids.append(doc['_id'])
-        
-    return user_ids
-
-async def del_user(user_id: int):
-    user_data.delete_one({'_id': user_id})
-    return
+if config.MONGO_DB_URI is None:
+    LOGGER(__name__).warning(
+        "No MONGO DB URL found.. Your Bot will work on Yukki's Database"
+    )
+    temp_client = Client(
+        "Indomie",
+        bot_token=config.BOT_TOKEN,
+        api_id=config.API_ID,
+        api_hash=config.API_HASH,
+    )
+    temp_client.start()
+    info = temp_client.get_me()
+    username = info.username
+    temp_client.stop()
+    _mongo_async_ = _mongo_client_(TEMP_MONGODB)
+    _mongo_sync_ = MongoClient(TEMP_MONGODB)
+    mongodb = _mongo_async_[username]
+    pymongodb = _mongo_sync_[username]
+else:
+    _mongo_async_ = _mongo_client_(config.MONGO_DB_URI)
+    _mongo_sync_ = MongoClient(config.MONGO_DB_URI)
+    mongodb = _mongo_async_.Indomie
+    pymongodb = _mongo_sync_.Indomie
