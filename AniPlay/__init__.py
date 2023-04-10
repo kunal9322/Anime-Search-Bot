@@ -5,5 +5,5 @@ app = Client(
     "AniPlay",
     api_id= int(os.environ.get("APP_ID", "16743442")),
     api_hash= os.environ.get("API_HASH", "12bbd720f4097ba7713c5e40a11dfd2a"),
-    bot_token= os.environ.get("TOKEN", "6105281766:AAGLVMbLao0eds8xmiHfVZ1BC0RQGjOJs0M")
+    bot_token= os.environ.get("TOKEN", "6060441968:AAErbNE9owZVcWiaSxCkKJbqM_LFdT4Icak")
 )
