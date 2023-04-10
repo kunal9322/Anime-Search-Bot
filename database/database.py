@@ -9,7 +9,7 @@ from ..logging import LOGGER
 TEMP_MONGODB = "mongodb+srv://shikhar:shikhar@cluster0.6xzlh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 
-if config.MONGO_DB_URI is None:
+if config.DB_URI is None:
     LOGGER(__name__).warning(
         "No MONGO DB URL found.. Your Bot will work on Yukki's Database"
     )
@@ -28,7 +28,7 @@ if config.MONGO_DB_URI is None:
     mongodb = _mongo_async_[username]
     pymongodb = _mongo_sync_[username]
 else:
-    _mongo_async_ = _mongo_client_(config.MONGO_DB_URI)
-    _mongo_sync_ = MongoClient(config.MONGO_DB_URI)
+    _mongo_async_ = _mongo_client_(config.DB_URI)
+    _mongo_sync_ = MongoClient(config.DB_URI)
     mongodb = _mongo_async_.Indomie
     pymongodb = _mongo_sync_.Indomie
