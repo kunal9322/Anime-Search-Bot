@@ -6,3 +6,4 @@ TgCrypto==1.2.5
 matplotlib==3.7.1
 pymongo
 dnspython
+motor==3.0.0
