@@ -2,7 +2,7 @@ import os
 
 
 #Database 
-DB_URI = os.environ.get("DATABASE_URL", "postgres://brmhwhgf:Eq_ZuGoNei_j50ST1iGf7WMymc6IO9vf@hattie.db.elephantsql.com/brmhwhgf")
+DATABASE_URL = os.environ.get("DATABASE_URL", "postgres://brmhwhgf:Eq_ZuGoNei_j50ST1iGf7WMymc6IO9vf@hattie.db.elephantsql.com/brmhwhgf")
 DB_NAME = os.environ.get("DATABASE_NAME", "kunal")
 
 #ForceSub
