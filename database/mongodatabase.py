@@ -6,7 +6,7 @@ dbclient = pymongo.MongoClient(DB_URI)
 database = dbclient[DB_NAME]
 
 
-userdb = database['users']
+usersdb = database['users']
 
 
 # Users
