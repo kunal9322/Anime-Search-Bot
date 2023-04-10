@@ -10,7 +10,7 @@ MUST_JOIN = os.environ.get("MUST_JOIN", "Campus_Bot_Update")
 
 try:
     ADMINS=[]
-    for x in (os.environ.get("ADMINS", "5885920877", "1447438514").split()):
+    for x in (os.environ.get("ADMINS", "5885920877").split()):
         ADMINS.append(int(x))
 except ValueError:
         raise Exception("Your Admins list does not contain valid integers.")
