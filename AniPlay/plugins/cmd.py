@@ -4,7 +4,7 @@ from AniPlay import app
 from AniPlay.plugins.AnimeDex import AnimeDex
 from AniPlay.plugins.button import BTN
 from AniPlay.plugins.stats import day, over
-from database.database import full_userbase
+from database.mongodatabase import add_served_user, get_served_users
 
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
@@ -43,6 +43,7 @@ async def must_join_channel(client, msg: Message):
 
 @app.on_message(filters.command(['start', 'ping', 'help', 'alive']))
 async def start(_, message: Message):
+    await add_served_user(message.from_user.id)
     try:
         await message.reply_text('Bot Is Online, \nYou Can Watch Anime Online With The Help Of The Bot \nEx- /search Anime name or /s Anime name\n\nIf You Face Any Problem Using Bot Then Contact @The_NanamiKento\nJoin For More Bots : @Campus_Bot_Update')
     except:
@@ -55,8 +56,8 @@ WAIT_MSG = """"<b>Processing ...</b>"""
 @app.on_message(filters.command('users') & filters.private & filters.user(ADMINS))
 async def get_users(client, message: Message):
     msg = await client.send_message(chat_id=message.chat.id, text=WAIT_MSG)
-    users = await full_userbase()
-    await msg.edit(f"{len(users)} users are using this bot")
+    served_users = len(await get_served_users())
+    await msg.edit(f"{served_users} users are using this bot")
 
 
 QUERY = '**Search Results:** `{}`'
