@@ -1,6 +1,6 @@
 from typing import Dict, List, Union
 
-from AniPlay.database.database import mongodb
+from database.database import mongodb
 
 
 usersdb = mongodb.tgusersdb
