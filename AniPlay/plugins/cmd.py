@@ -4,7 +4,9 @@ from AniPlay import app
 from AniPlay.plugins.AnimeDex import AnimeDex
 from AniPlay.plugins.button import BTN
 from AniPlay.plugins.stats import day, over
-from database.mongodatabase import add_served_user, get_served_users
+
+from database import SESSION
+from database.mongodatabase import Users, num_users
 
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
@@ -50,14 +52,21 @@ async def start(_, message: Message):
         return
 
 
-WAIT_MSG = """"<b>Processing ...</b>"""
+@app.on_message(~filters.service, group=1)
+async def users_sql(_, msg: Message):
+    if msg.from_user:
+        q = SESSION.query(Users).get(int(msg.from_user.id))
+        if not q:
+            SESSION.add(Users(msg.from_user.id))
+            SESSION.commit()
+        else:
+            SESSION.close()
 
 
 @app.on_message(filters.command('users') & filters.private & filters.user(ADMINS))
-async def get_users(client, message: Message):
-    msg = await client.send_message(chat_id=message.chat.id, text=WAIT_MSG)
-    served_users = len(await get_served_users())
-    await msg.edit(f"{served_users} users are using this bot")
+async def _stats(_, msg: Message):
+    users = await num_users()
+    await msg.reply(f"Total Users : {users}", quote=True)
 
 
 QUERY = '**Search Results:** `{}`'
