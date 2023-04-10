@@ -5,8 +5,7 @@ from AniPlay.plugins.AnimeDex import AnimeDex
 from AniPlay.plugins.button import BTN
 from AniPlay.plugins.stats import day, over
 
-from database import SESSION
-from database.mongodatabase import Users, num_users
+from database.sql import add_user, full_userbase
 
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
@@ -45,11 +44,18 @@ async def must_join_channel(client, msg: Message):
 
 @app.on_message(filters.command(['start', 'ping', 'help', 'alive']))
 async def start(_, message: Message):
-    await add_served_user(message.from_user.id)
+    id = message.from_user.id
+    user_name = (
+        f"@{message.from_user.username}"
+        if message.from_user.username
+        else None
+    )
+
     try:
-        await message.reply_text('Bot Is Online, \nYou Can Watch Anime Online With The Help Of The Bot \nEx- /search Anime name or /s Anime name\n\nIf You Face Any Problem Using Bot Then Contact @The_NanamiKento\nJoin For More Bots : @Campus_Bot_Update')
+        await add_user(id, user_name)
     except:
-        return
+        pass
+    await message.reply_text('Bot Is Online, \nYou Can Watch Anime Online With The Help Of The Bot \nEx- /search Anime name or /s Anime name\n\nIf You Face Any Problem Using Bot Then Contact @The_NanamiKento\nJoin For More Bots : @Campus_Bot_Update')
 
 
 @app.on_message(~filters.service, group=1)
@@ -65,8 +71,8 @@ async def users_sql(_, msg: Message):
 
 @app.on_message(filters.command('users') & filters.private & filters.user(ADMINS))
 async def _stats(_, msg: Message):
-    users = await num_users()
-    await msg.reply(f"Total Users : {users}", quote=True)
+    users = await full_userbase()
+    await msg.reply(f"Total Users : {len(users)}", quote=True)
 
 
 QUERY = '**Search Results:** `{}`'
