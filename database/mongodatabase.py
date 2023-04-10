@@ -13,7 +13,7 @@ usersdb = database['users']
 
 
 async def is_served_user(user_id: int) -> bool:
-    user = await usersdb.find_one({"user_id": user_id})
+    user = usersdb.find_one({"user_id": user_id})
     if not user:
         return False
     return True
