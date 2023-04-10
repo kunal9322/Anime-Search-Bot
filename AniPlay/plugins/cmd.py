@@ -23,7 +23,7 @@ async def must_join_channel(client, msg: Message):
             if MUST_JOIN.isalpha():
                 link = "https://t.me/" + MUST_JOIN
             else:
-                chat_info = await bot.get_chat(MUST_JOIN)
+                chat_info = await app.get_chat(MUST_JOIN)
                 link = chat_info.invite_link
             try:
                 await msg.reply(
