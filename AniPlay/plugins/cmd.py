@@ -13,12 +13,12 @@ from config import MUST_JOIN, ADMINS
 
 
 @app.on_message(filters.incoming & filters.private, group=-1)
-async def must_join_channel(Client, msg: Message):
+async def must_join_channel(client, msg: Message):
     if not MUST_JOIN:  # Not compulsory
         return
     try:
         try:
-            await bot.get_chat_member(MUST_JOIN, msg.from_user.id)
+            await app.get_chat_member(MUST_JOIN, msg.from_user.id)
         except UserNotParticipant:
             if MUST_JOIN.isalpha():
                 link = "https://t.me/" + MUST_JOIN
