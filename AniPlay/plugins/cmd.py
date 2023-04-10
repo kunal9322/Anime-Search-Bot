@@ -13,7 +13,7 @@ from config import MUST_JOIN, ADMINS
 
 
 @app.on_message(filters.incoming & filters.private, group=-1)
-async def must_join_channel(bot: Client, msg: Message):
+async def must_join_channel(Client, msg: Message):
     if not MUST_JOIN:  # Not compulsory
         return
     try:
