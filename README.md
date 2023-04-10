@@ -49,14 +49,6 @@
 <hr>
 
 
-### 👤 Contact Me
-
-[![Telegram Channel](https://img.shields.io/static/v1?label=Join&message=Telegram%20Channel&color=blueviolet&style=for-the-badge&logo=telegram&logoColor=violet)](https://telegram.me/GreyMatter_Bots) [![Telegram Group](https://img.shields.io/static/v1?label=Join&message=Telegram%20Group&color=blueviolet&style=for-the-badge&logo=telegram&logoColor=violet)](https://telegram.me/GreyMatter_Support)
-
-<hr>
-
 ### ⭐ Credits
 
-* [TechZBots](https://t.me/TechZBots)
-* [TechShreyash](https://github.com/TechShreyash)
-* [GreyMatter's](https://github.com/GreyMattersBot) for adding web support, solving some errors & For Promoting this Project.
+* [IndomieGorengSatu](https://t.me/IndomieGenetik)
