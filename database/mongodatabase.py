@@ -1,8 +1,8 @@
-from config import DB_URI
+from config import DATABASE_URL
 
 from sqlalchemy import Column, BigInteger
 
-if DB_URI !="":
+if DATABASE_URL !="":
     from database import BASE, SESSION
 else:
     BASE = "..."
