@@ -6,6 +6,7 @@ pyrogram==2.0.100
 TgCrypto==1.2.5
 matplotlib==3.7.1
 pymongo[srv]
+psycopg2-binary
 dnspython
 motor==3.0.0
 SQLAlchemy==1.4.*
