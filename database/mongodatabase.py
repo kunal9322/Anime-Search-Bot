@@ -1,9 +1,12 @@
-from typing import Dict, List, Union
+import pymongo, os
+from config import DB_URI, DB_NAME
 
-from database.database import mongodb
+
+dbclient = pymongo.MongoClient(DB_URI)
+database = dbclient[DB_NAME]
 
 
-usersdb = mongodb.tgusersdb
+userdb = database['users']
 
 
 # Users
