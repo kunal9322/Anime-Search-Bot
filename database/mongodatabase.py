@@ -1,33 +1,35 @@
-import pymongo, os
-from config import DB_URI, DB_NAME
+from config import DB_URI
+
+from sqlalchemy import Column, BigInteger
+
+if DB_URI !="":
+    from database import BASE, SESSION
+else:
+    BASE = "..."
 
 
-dbclient = pymongo.MongoClient(DB_URI)
-database = dbclient[DB_NAME]
+class Users(BASE):
+    __tablename__ = "users"
+    __table_args__ = {'extend_existing': True}
+    user_id = Column(BigInteger, primary_key=True)
+
+    def __init__(self, user_id, channels=None):
+        if DATABASE_URL == "":
+            return
+        self.user_id = user_id
+        self.channels = channels
+
+    # def __repr__(self):
+    #     return "<User {} {} {} ({})>".format(self.thumbnail, self.thumbnail_status, self.video_to, self.user_id)
 
 
-usersdb = database['users']
+if DATABASE_URL !="":
+    Users.__table__.create(checkfirst=True)
 
 
-# Users
-
-
-async def present_user(user_id : int):
-    found = user_data.find_one({'_id': user_id})
-    return bool(found)
-
-async def add_user(user_id: int):
-    user_data.insert_one({'_id': user_id})
-    return
-
-async def full_userbase():
-    user_docs = user_data.find()
-    user_ids = []
-    for doc in user_docs:
-        user_ids.append(doc['_id'])
-        
-    return user_ids
-
-async def del_user(user_id: int):
-    user_data.delete_one({'_id': user_id})
-    return
+async def num_users():
+    if DATABASE_URL !="":
+        try:
+            return SESSION.query(Users).count()
+        finally:
+            SESSION.close()
