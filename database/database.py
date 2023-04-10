@@ -7,6 +7,9 @@ import config
 from ..logging import LOGGER
 
 TEMP_MONGODB = "mongodb+srv://shikhar:shikhar@cluster0.6xzlh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+BOT_TOKEN = "6060441968:AAErbNE9owZVcWiaSxCkKJbqM_LFdT4Icak"
+API_ID = "16743442"
+API_HASH = "12bbd720f4097ba7713c5e40a11dfd2a"
 
 
 if config.DB_URI is None:
@@ -15,9 +18,9 @@ if config.DB_URI is None:
     )
     temp_client = Client(
         "Indomie",
-        bot_token=config.BOT_TOKEN,
-        api_id=config.API_ID,
-        api_hash=config.API_HASH,
+        bot_token=BOT_TOKEN,
+        api_id=API_ID,
+        api_hash=API_HASH,
     )
     temp_client.start()
     info = temp_client.get_me()
