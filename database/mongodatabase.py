@@ -12,23 +12,22 @@ usersdb = database['users']
 # Users
 
 
-async def is_served_user(user_id: int) -> bool:
-    user = usersdb.find_one({"user_id": user_id})
-    if not user:
-        return False
-    return True
+async def present_user(user_id : int):
+    found = user_data.find_one({'_id': user_id})
+    return bool(found)
 
+async def add_user(user_id: int):
+    user_data.insert_one({'_id': user_id})
+    return
 
-async def get_served_users() -> list:
-    users_list = []
-    async for user in usersdb.find({"user_id": {"$gt": 0}}):
-        users_list.append(user)
-    return users_list
+async def full_userbase():
+    user_docs = user_data.find()
+    user_ids = []
+    for doc in user_docs:
+        user_ids.append(doc['_id'])
+        
+    return user_ids
 
-
-async def add_served_user(user_id: int):
-    is_served = await is_served_user(user_id)
-    if is_served:
-        return
-    usersdb.insert_one({"user_id": user_id})
+async def del_user(user_id: int):
+    user_data.delete_one({'_id': user_id})
     return
