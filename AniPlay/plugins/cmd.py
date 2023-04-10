@@ -5,7 +5,7 @@ from AniPlay.plugins.AnimeDex import AnimeDex
 from AniPlay.plugins.button import BTN
 from AniPlay.plugins.stats import day, over
 
-from database.sql import full_userbase
+from database.database import full_userbase
 
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
@@ -53,7 +53,7 @@ async def start(_, message: Message):
 @app.on_message(filters.command('users') & filters.private & filters.user(ADMINS))
 async def _stats(_, msg: Message):
     users = await full_userbase()
-    await msg.reply(f"Total Users : {len(users)}", quote=True)
+    await msg.reply(f"{len(users)} users are using this bot")
 
 
 QUERY = '**Search Results:** `{}`'
