@@ -16,8 +16,6 @@ async def init():
     await idle()
     print("[INFO]: BOT STOPPED")
     await app.stop()
-    for task in asyncio.all_tasks():
-        task.cancel()
 
 if __name__ == "__main__":
     loop.run_until_complete(init())
