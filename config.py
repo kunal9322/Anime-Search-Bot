@@ -6,7 +6,7 @@ DB_URI = os.environ.get("DATABASE_URL", "mongodb+srv://sonu55:sonu55@cluster0.vq
 DB_NAME = os.environ.get("DATABASE_NAME", "kunal")
 
 #ForceSub
-MUST_JOIN = os.environ.get("MUST_JOIN", "Campus_Bot_Update")
+MUST_JOIN = os.environ.get("MUST_JOIN", "Campus_Bot_Updates")
 
 try:
     ADMINS=[]
