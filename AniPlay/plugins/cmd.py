@@ -28,10 +28,10 @@ async def must_join_channel(client, msg: Message):
                 link = chat_info.invite_link
             try:
                 await msg.reply(
-                    f"**You need to join in my Channel/Group to use me\n\nKindly Please join Channel**",
+                    f"**ʏᴏᴜ ɴᴇᴇᴅ ᴛᴏ ᴊᴏɪɴ iɴ ᴍʏ ᴄʜᴀɴɴᴇʟ/ɢʀᴏᴜᴘ ᴛᴏ ᴜsᴇ ᴍᴇ\n\n ᴋɪɴᴅʟʏ ᴘʟᴇᴀsᴇ ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ🍁**",
                     disable_web_page_preview=True,
                     reply_markup=InlineKeyboardMarkup([
-                        [InlineKeyboardButton("Join", url=link)]
+                        [InlineKeyboardButton("ᴊᴏɪɴ", url=link)]
                     ])
                 )
                 await msg.stop_propagation()
@@ -45,7 +45,7 @@ async def must_join_channel(client, msg: Message):
 @app.on_message(filters.command(['start', 'ping', 'help', 'alive']))
 async def start(_, message: Message):
     try:
-        await message.reply_text('Bot Is Online, \nYou Can Watch Anime Online With The Help Of The Bot \nEx- /search Anime name or /s Anime name\n\nIf You Face Any Problem Using Bot Then Contact @The_NanamiKento\nJoin For More Bots : @Campus_Bot_Update')
+        await message.reply_text('ʙᴏᴛ ɪs ᴏɴʟɪɴᴇ , \nʏᴏᴜ ᴄᴀɴ ᴡᴀᴛᴄʜ ᴀɴɪᴍᴇ ᴏɴʟɪɴᴇ ᴡɪᴛʜ ᴛʜᴇ ʜᴇʟᴘ ᴏғ ᴛʜᴇ ʙᴏᴛ \nᴇx- /search Anime name or /s Anime name\n\nɪғ ʏᴏᴜ ғᴀᴄᴇ ᴀɴʏ ᴘʀᴏʙʟᴇᴍ ᴜsɪɴɢ ᴛʜɪs ʙᴏᴛ ᴛʜᴇɴ ᴄᴏɴᴛᴀᴄᴛ @The_Nanamii\n\nᴊᴏɪɴ ғᴏʀ ᴍᴏʀᴇ ʙᴏᴛs : @Campus_Bot_Updates')
     except:
         return
 
