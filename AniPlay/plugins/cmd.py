@@ -49,17 +49,18 @@ async def start(_, message: Message):
     except:
         return
 
-
-@app.on_message(filters.command('users') & filters.private & filters.user(ADMINS))
-async def _stats(_, msg: Message):
-    users = await full_userbase()
-    await msg.reply(f"{len(users)} users are using this bot")
+@app.on_message(filters.command(['basket']))
+async def start(_, message: Message):
+    try:
+        await message.reply_text('🏀')
+    except:
+        return
 
 
 QUERY = '**Search Results:** `{}`'
 
 
-@app.on_message(filters.command(['search', 's']))
+@app.on_message(filters.command(['search', 's','anime']))
 async def searchCMD(_, message: Message):
     try:
         user = message.from_user.id
