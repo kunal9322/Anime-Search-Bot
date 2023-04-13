@@ -5,8 +5,6 @@ from AniPlay.plugins.AnimeDex import AnimeDex
 from AniPlay.plugins.button import BTN
 from AniPlay.plugins.stats import day, over
 
-from database.database import full_userbase
-
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from pyrogram.errors import ChatAdminRequired, UserNotParticipant, ChatWriteForbidden
