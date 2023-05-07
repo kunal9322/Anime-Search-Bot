@@ -1,4 +1,4 @@
-from yourbot import app,bot_token
+from AniPlay import app,bot_token
 from pyrogram import filters
 import requests
 from urllib.parse import quote_plus
