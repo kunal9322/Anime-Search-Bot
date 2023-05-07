@@ -1,5 +1,5 @@
-from AniPlay import app, TOKEN
-from pyrogram import filters
+from AniPlay import app, bot_token
+from pyrogram import filters, Client
 import requests
 from urllib.parse import quote_plus
 from bs4 import BeautifulSoup
